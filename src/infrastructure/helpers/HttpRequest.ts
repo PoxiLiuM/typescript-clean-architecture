@@ -1,6 +1,6 @@
 interface RequestType {
-  body?: object;
-  query?: object;
+  body?: any;
+  query?: any;
 }
 
 export class HttpRequest {

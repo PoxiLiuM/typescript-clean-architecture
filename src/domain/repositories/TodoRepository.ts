@@ -1,7 +1,5 @@
 import { IDataBase } from "../../interfaces/IDataBase";
-import { IEntity } from "../../interfaces/IEntity";
 import { IRepository } from "../../interfaces/IRepository";
-import { Todo } from "../entities/Todo";
 
 export class TodoRepository implements IRepository {
   constructor(

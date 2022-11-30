@@ -2,14 +2,14 @@ import { Todo } from "../../../domain/entities/Todo";
 import { IRepository } from "../../../interfaces/IRepository";
 import { IUseCase } from "../../../interfaces/IUseCase";
 
-export class FindAllTodosUseCase implements IUseCase {
+export class CreateTodoUseCase implements IUseCase {
   readonly repository: IRepository;
 
   constructor(repository: IRepository) {
     this.repository = repository;
   }
 
-  async execute(): Promise<Todo[]> {
-    return await this.repository.findAll();
+  async execute(todo: Omit<Todo, '_id'>): Promise<Todo> {
+    return await await this.repository.create(todo);
   }
 }

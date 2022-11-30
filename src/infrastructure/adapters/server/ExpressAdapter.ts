@@ -9,6 +9,13 @@ export class ExpressAdapter implements IServer {
   private readonly app: Application = express();
 
   public async start(port: number): Promise<void> {
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: true }));
+
+    this.app.post('/', async (req: Request, res: Response) => {
+      const response = await this.todoController.createTodo(new HttpRequest(req));
+      return res.status(response.statusCode).send(response);
+    });
     this.app.get('/', async (req: Request, res: Response) => {
       const response = await this.todoController.findAllTodos(new HttpRequest(req));
       return res.status(response.statusCode).send(response);
