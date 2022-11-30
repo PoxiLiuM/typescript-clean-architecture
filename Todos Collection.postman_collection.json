@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "2e2a8b28-cf81-4c42-9e48-c2cefcda255d",
+		"name": "Todos Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:2503",
+					"host": [
+						"localhost"
+					],
+					"port": "2503"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Todo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "Ceci est un titre",
+							"type": "default"
+						},
+						{
+							"key": "content",
+							"value": "Ceci est un contenu qui ne sert à rien",
+							"type": "default"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:2503",
+					"host": [
+						"localhost"
+					],
+					"port": "2503"
+				}
+			},
+			"response": []
+		}
+	]
+}
