@@ -1,5 +1,4 @@
 import { IDataBase } from "../../../interfaces/IDataBase";
-import { IEntity } from "../../../interfaces/IEntity";
 
 export class InMemoryAdapter implements IDataBase {
   private readonly db: any = {};
