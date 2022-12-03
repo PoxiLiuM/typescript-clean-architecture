@@ -5,7 +5,5 @@ export interface IUseCasesGroup {
 }
 
 export interface IUseCase {
-  repository: IRepository;
-
   execute(opts?: object): Promise<object>;
 }
