@@ -1,5 +1,4 @@
 import express, { Application, Request, Response } from "express";
-import { TodoController } from "../../../application/controllers/TodoController";
 import { IServer } from "../../interfaces/IServer";
 import { HttpRequest } from "../../helpers/HttpRequest";
 import { useRouter } from "../../kernel/useRouter";
@@ -21,7 +20,7 @@ export class ExpressAdapter implements IServer {
       });
     });
 
-    await this.app.listen(port);
+    this.app.listen(port);
     console.log(`⭐️ Express Server listening on port ${port}`);
   }
 }
