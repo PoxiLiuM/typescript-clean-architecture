@@ -8,6 +8,8 @@ export class FastifyAdapter implements IServer {
   private readonly app: FastifyInstance = fastify();
 
   public async start(port: number): Promise<void> {
+    this.app.register(require('@fastify/formbody'))
+
     const { router } = useRouter();
 
     router.forEach((route) => {

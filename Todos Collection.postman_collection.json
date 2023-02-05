@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2e2a8b28-cf81-4c42-9e48-c2cefcda255d",
+		"_postman_id": "d40454d5-0adb-4f67-92f6-d3b0a940898f",
 		"name": "Todos Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,11 +11,16 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:2503",
+					"raw": "localhost:2503/api/v1/todos",
 					"host": [
 						"localhost"
 					],
-					"port": "2503"
+					"port": "2503",
+					"path": [
+						"api",
+						"v1",
+						"todos"
+					]
 				}
 			},
 			"response": []
@@ -46,11 +51,16 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:2503",
+					"raw": "localhost:2503/api/v1/todos",
 					"host": [
 						"localhost"
 					],
-					"port": "2503"
+					"port": "2503",
+					"path": [
+						"api",
+						"v1",
+						"todos"
+					]
 				}
 			},
 			"response": []
