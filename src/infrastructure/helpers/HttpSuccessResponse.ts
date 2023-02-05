@@ -1,4 +1,4 @@
-import { IResponse } from "../../interfaces/IResponse";
+import { IResponse } from "../interfaces";
 
 export class HttpSuccessResponse implements IResponse {
   statusCode: number = 200;

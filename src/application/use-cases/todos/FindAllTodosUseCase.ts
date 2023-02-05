@@ -1,13 +1,15 @@
-import { Todo } from "../../../domain/entities/Todo";
-import { TodoRepository } from "../../../domain/repositories/TodoRepository";
-import { IUseCase } from "../../../interfaces/IUseCase";
+import { Todo } from "../../../domain/entities";
+import { TodoRepository } from "../../../domain/repositories";
+import { IUseCase } from "../../../infrastructure/interfaces";
 
 export class FindAllTodosUseCase implements IUseCase {
   constructor(
-    private readonly repository: TodoRepository
-  ) {}
+    public readonly repository: TodoRepository
+  ) {
+    this.execute = this.execute.bind(this);
+  }
 
   async execute(): Promise<Todo[]> {
-    return await this.repository.findAll();
+    return await this.repository.find();
   }
 }

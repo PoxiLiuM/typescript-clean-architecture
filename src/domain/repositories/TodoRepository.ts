@@ -1,16 +1,9 @@
-import { IDataBase } from "../../interfaces/IDataBase";
-import { IRepository } from "../../interfaces/IRepository";
+import { IDataBase } from "../../infrastructure/interfaces";
 import { Todo } from "../entities/Todo";
+import { Repository } from "./Repository";
 
-export class TodoRepository implements IRepository<Todo> {
-  constructor(
-    private readonly database: IDataBase
-  ){}
-
-  async findAll(): Promise<Todo[]> {
-    return await this.database.find<Todo>('todos');
-  }
-  async create(todo: Omit<Todo, '_id'>): Promise<Todo> {
-    return await this.database.create<Todo>('todos', todo);
+export class TodoRepository extends Repository<Todo> {
+  constructor(database: IDataBase){
+    super('todos', database);
   }
 }

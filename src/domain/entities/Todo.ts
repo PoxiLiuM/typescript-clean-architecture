@@ -1,7 +1,7 @@
-import { IEntity } from "../../interfaces/IEntity";
+import { IEntity } from "../../infrastructure/interfaces";
 
 export class Todo implements IEntity {
-  _id?: string;
+  _id?: number;
   title: string;
   content: string;
 

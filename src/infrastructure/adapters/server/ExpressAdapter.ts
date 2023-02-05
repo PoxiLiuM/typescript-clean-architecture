@@ -1,24 +1,24 @@
 import express, { Application, Request, Response } from "express";
 import { TodoController } from "../../../application/controllers/TodoController";
-import { IServer } from "../../../interfaces/IServer";
-import { TodoControllerFactory } from "../../factories/TodoControllerFactory";
+import { IServer } from "../../interfaces/IServer";
 import { HttpRequest } from "../../helpers/HttpRequest";
+import { useRouter } from "../../kernel/useRouter";
 
 export class ExpressAdapter implements IServer {
-  private readonly todoController: TodoController = new TodoControllerFactory().create();
+
   private readonly app: Application = express();
 
   public async start(port: number): Promise<void> {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
 
-    this.app.post('/', async (req: Request, res: Response) => {
-      const response = await this.todoController.createTodo(new HttpRequest(req));
-      return res.status(response.statusCode).send(response);
-    });
-    this.app.get('/', async (req: Request, res: Response) => {
-      const response = await this.todoController.findAllTodos(new HttpRequest(req));
-      return res.status(response.statusCode).send(response);
+    const { router } = useRouter();
+
+    router.forEach((route) => {
+      (this.app as any)[route.method.toLowerCase() as string](route.path, async (req: Request, res: Response) => {
+        const response = await route.handler(new HttpRequest(req));
+        return res.status(response.statusCode).send(response);
+      });
     });
 
     await this.app.listen(port);
