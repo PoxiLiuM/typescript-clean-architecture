@@ -1,4 +1,5 @@
 import { Controller } from "./Controller";
+import { MiddlewareDecoratorFactory } from "./MiddlewareDecoratorFactory";
 import { Get, Post, Delete, Put, Patch } from "./Route";
 
 export {
@@ -7,5 +8,6 @@ export {
   Post,
   Delete,
   Put,
-  Patch
+  Patch,
+  MiddlewareDecoratorFactory
 }

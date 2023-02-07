@@ -1,7 +1,8 @@
 import { Todo } from "../../domain/entities";
 import { HttpRequest, HttpSuccessResponse, HttpInternalServerErrorResponse } from "../../infrastructure/helpers";
 import { IController, IResponse } from "../../infrastructure/interfaces";
-import { Controller, Get, Post } from "../../infrastructure/kernel/decorators";
+import { Controller, Get, Post } from "../decorators";
+import { DemoMiddleware } from "../middlewares/DemoMiddleware";
 import { CreateTodoUseCase, FindAllTodosUseCase } from "../use-cases/todos";
 
 @Controller('/todos')
@@ -29,6 +30,7 @@ export class TodoController implements IController {
   }
 
   @Get('/')
+  @DemoMiddleware()
   public async findAllTodos(httpRequest?: HttpRequest): Promise<IResponse> {
     try {
       return new HttpSuccessResponse(await this.findAllTodosUseCase.execute())

@@ -1,17 +1,17 @@
 import { IDataBase } from "./IDataBase";
 import { IRepository } from "./IRepository";
-import { IFactory } from "./IFactory";
 import { IController } from "./IController";
 import { IUseCase } from "./IUseCase";
 import { IResponse } from "./IResponse";
 import { IEntity } from "./IEntity";
+import { IMiddleware } from "./IMiddleware";
 
 export {
   IEntity,
   IDataBase,
   IRepository,
-  IFactory,
   IController,
   IUseCase,
-  IResponse
+  IResponse,
+  IMiddleware
 }
