@@ -20,11 +20,13 @@ function makeRouter() {
   Object.values(controllers).forEach((controller: any) => {
     controller.routes.forEach((route: any) => {
       const middlewares: Function[] = [];
-      controller.middlewares.forEach((middleware: MiddlewareType) => {
-        if (!middleware.key || middleware.key === route.key) {
-          middlewares.push(middleware.handler);
-        }
-      })
+      if (Array.isArray(controller?.middlewares) && controller.middlewares.length) {
+        controller.middlewares.forEach((middleware: MiddlewareType) => {
+          if (!middleware.key || middleware.key === route.key) {
+            middlewares.push(middleware.handler);
+          }
+        });
+      }
       router.push({
         method: route.method, 
         path: `${controller.path}${route.path}`, 
